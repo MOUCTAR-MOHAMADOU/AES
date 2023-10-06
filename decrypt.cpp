@@ -131,7 +131,7 @@ void AESDecrypt(unsigned char * encryptedMessage, unsigned char * expandedKey, u
 int main() {
 
 	cout << "=============================" << endl;
-	cout << " 128-bit AES Decryption Tool " << endl;
+	cout << " Outil de déchiffrement AES " << endl;
 	cout << "=============================" << endl;
 
 	// Read in the message from message.aes
@@ -142,11 +142,11 @@ int main() {
 	if (infile.is_open())
 	{
 		getline(infile, msgstr); // The first line of file is the message
-		cout << "Read in encrypted message from message.aes" << endl;
+		cout << "Lecture du message chiffré à partir de message.aes" << endl;
 		infile.close();
 	}
 
-	else cout << "Unable to open file";
+	else cout << "Impossible d'ouvrir le fichier";
 
 	char * msg = new char[msgstr.size()+1];
 
@@ -170,11 +170,11 @@ int main() {
 	if (keyfile.is_open())
 	{
 		getline(keyfile, keystr); // The first line of file should be the key
-		cout << "Read in the 128-bit key from keyfile" << endl;
+		cout << "Lecture de la clé du fichier de clés" << endl;
 		keyfile.close();
 	}
 
-	else cout << "Unable to open file";
+	else cout << "Impossible d'ouvrir le fichier";
 
 	istringstream hex_chars_stream(keystr);
 	unsigned char key[16];
@@ -198,13 +198,13 @@ int main() {
 		AESDecrypt(encryptedMessage + i, expandedKey, decryptedMessage + i);
 	}
 
-	cout << "Decrypted message in hex:" << endl;
+	cout << "Message déchiffré en hexadécimal:" << endl;
 	for (int i = 0; i < messageLen; i++) {
 		cout << hex << (int)decryptedMessage[i];
 		cout << " ";
 	}
 	cout << endl;
-	cout << "Decrypted message: ";
+	cout << "Message déchiffré: ";
 	for (int i = 0; i < messageLen; i++) {
 		cout << decryptedMessage[i];
 	}
