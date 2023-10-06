@@ -223,7 +223,7 @@ Vector MatrixProductB(const Matrix &A, const std::vector<bool> &b)
     Vector result(A.size(), 0);
     for (int i = 0; i < A.size(); i++)
     {
-        // Effectuer l'opération XOR entre b[i] et d[i]
+        // Effectuer l'opération XOR entre b[i] et c[i]
         for (int j = 0; j < A[i].size(); j++)
         {
             result[i] ^= A[i][j] * (b[j] ^ c[j]); // Effectuer la multiplication et le XOR avec le résultat partiel
