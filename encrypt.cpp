@@ -127,12 +127,12 @@ void AESEncrypt(unsigned char * message, unsigned char * expandedKey, unsigned c
 int main() {
 
 	cout << "=============================" << endl;
-	cout << " 128-bit AES Encryption Tool   " << endl;
+	cout << " Outil de chiffrement AES   " << endl;
 	cout << "=============================" << endl;
 
 	char message[1024];
 
-	cout << "Enter the message to encrypt: ";
+	cout << "Saisir le message à chiffrer: ";
 	cin.getline(message, sizeof(message));
 	cout << message << endl;
 
@@ -167,7 +167,7 @@ int main() {
 		infile.close();
 	}
 
-	else cout << "Unable to open file";
+	else cout << "Impossible d'ouvrir le fichier";
 
 	istringstream hex_chars_stream(str);
 	unsigned char key[16];
@@ -187,11 +187,12 @@ int main() {
 		AESEncrypt(paddedMessage+i, expandedKey, encryptedMessage+i);
 	}
 
-	cout << "Encrypted message in hex:" << endl;
+	cout << "Message chiffré en hexadécimal :" << endl;
 	for (int i = 0; i < paddedMessageLen; i++) {
 		cout << hex << (int) encryptedMessage[i];
 		cout << " ";
 	}
+
 	cout << endl;
 
 	// Write the encrypted string out to file "message.aes"
@@ -201,10 +202,10 @@ int main() {
 	{
 		outfile << encryptedMessage;
 		outfile.close();
-		cout << "Wrote encrypted message to file message.aes" << endl;
+		cout << "Écriture du message chiffré dans le fichier message.aes" << endl;
 	}
 
-	else cout << "Unable to open file";
+	else cout << "Impossible d'ouvrir le fichier";
 
 	// Free memory
 	delete[] paddedMessage;
