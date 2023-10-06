@@ -25,7 +25,7 @@ const Matrix A = {
 const Matrix B = {
     {0, 0, 1, 0, 0, 1, 0, 1},
     {1, 0, 0, 1, 0, 0, 1, 0},
-	{0, 1, 0, 0, 1, 0, 0, 1},
+    {0, 1, 0, 0, 1, 0, 0, 1},
     {1, 0, 1, 0, 0, 1, 0, 0},
     {0, 1, 0, 1, 0, 0, 1, 0},
     {0, 0, 1, 0, 1, 0, 0, 1},
@@ -33,7 +33,6 @@ const Matrix B = {
     {0, 1, 0, 0, 1, 0, 1, 0}    
 };
 const Vector c = {1,1,0,0,0,1,1,0};
-const Vector d = {1,1,0,0,0,1,1,0};
 // Définition de la constante m(x)
 const std::bitset<9> mx = 0b100011011;
 
@@ -207,7 +206,7 @@ for (int i = 0; i < A.size(); i++) {
 for (int j = 0; j < A[i].size(); j++) {
 //bool bit = b[i] ^ d[i];
 //unsigned char n = A[i][j];
-result[i] ^= A[i][j] * (b[j]^d[j]); // Effectuer la multiplication et le XOR avec le résultat partiel
+result[i] ^= A[i][j] * (b[j]^c[j]); // Effectuer la multiplication et le XOR avec le résultat partiel
 }
 }
 return result;
