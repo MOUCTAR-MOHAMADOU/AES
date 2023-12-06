@@ -186,17 +186,20 @@ int main() {
 	for (int i = 0; i < paddedMessageLen; i += 16) {
 		AESEncrypt(paddedMessage+i, expandedKey, encryptedMessage+i);
 	}
-
-	cout << "Message chiffré en hexadécimal :" << endl;
-	for (int i = 0; i < paddedMessageLen; i++) {
-		cout << hex << (int) encryptedMessage[i];
-		cout << " ";
-	}
-
-	cout << endl;
-
-	// Write the encrypted string out to file "message.aes"
+	// Write the encrypted string out to file "message.hex"
 	ofstream outfile;
+	outfile.open("message", ios::out | ios::binary);
+	if (outfile.is_open())
+	{
+		for (int i = 0; i < paddedMessageLen; i++) {
+			outfile << std::dec << (int)encryptedMessage[i];
+			outfile << "\n";
+		}
+		outfile.close();
+		cout << "Écriture du message chiffré dans le fichier message" << endl;
+	}
+	else cout << "Impossible d'ouvrir le fichier";
+// Write the encrypted string out to file "message.aes"
 	outfile.open("message.aes", ios::out | ios::binary);
 	if (outfile.is_open())
 	{
@@ -204,12 +207,9 @@ int main() {
 		outfile.close();
 		cout << "Écriture du message chiffré dans le fichier message.aes" << endl;
 	}
-
 	else cout << "Impossible d'ouvrir le fichier";
-
 	// Free memory
 	delete[] paddedMessage;
 	delete[] encryptedMessage;
-
 	return 0;
 }
