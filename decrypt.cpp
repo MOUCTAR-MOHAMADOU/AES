@@ -173,7 +173,6 @@ int main() {
 		cout << "Lecture de la clé du fichier de clés" << endl;
 		keyfile.close();
 	}
-
 	else cout << "Impossible d'ouvrir le fichier";
 
 	istringstream hex_chars_stream(keystr);
@@ -187,11 +186,8 @@ int main() {
 	}
 
 	unsigned char expandedKey[176];
-
-	KeyExpansion(key, expandedKey);
-	
+	KeyExpansion(key, expandedKey);	
 	int messageLen = strlen((const char *)encryptedMessage);
-
 	unsigned char * decryptedMessage = new unsigned char[messageLen];
 
 	for (int i = 0; i < messageLen; i += 16) {
